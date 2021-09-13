@@ -3,6 +3,7 @@ package org.rede_social.knowledgeDomainKD.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,11 +40,29 @@ public class Usuario {
 
 	private String tipo;
 
+	private String descricao;
+
+	@Column(length = 2000)
+	private String bio;
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
 	public Usuario() {
+	}
+
+	public Usuario(Long id, String nome, String email,
+			String senha, String foto, String tipo, String descricao, String bio) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.foto = foto;
+		this.tipo = tipo;
+		this.descricao = descricao;
+		this.bio = bio;
 	}
 
 	public Long getId() {
@@ -94,6 +113,22 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
 	public List<Postagem> getPostagem() {
 		return postagem;
 	}
@@ -101,5 +136,5 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
+
 }

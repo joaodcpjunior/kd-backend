@@ -52,4 +52,25 @@ public class UsuarioService {
 		}
 		return null;
 	}
+	
+	public Optional<?> alterarUsuario(UsuarioDTO usuarioParaAlterar) {
+		return repository.findById(usuarioParaAlterar.getId()).map(usuarioExistente -> {
+
+			if(usuarioParaAlterar.getNome().isBlank()) {
+				usuarioExistente.setNome(usuarioExistente.getNome());
+			} else {
+				usuarioExistente.setNome(usuarioParaAlterar.getNome());
+			}
+			
+			usuarioExistente.setSenha(usuarioExistente.getSenha());
+			usuarioExistente.setDescricao(usuarioParaAlterar.getDescricao());
+			usuarioExistente.setFoto(usuarioParaAlterar.getFoto());
+			usuarioExistente.setTipo(usuarioParaAlterar.getTipo());
+			usuarioExistente.setBio(usuarioParaAlterar.getBio());
+			return Optional.ofNullable(repository.save(usuarioExistente));
+		}).orElseGet(() -> {
+			return Optional.empty();
+		});
+	}
+
 }

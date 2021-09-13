@@ -13,11 +13,28 @@ public class UsuarioDTO {
 	private String foto;
 
 	private String tipo;
+	
+	private String descricao;
+
+	private String bio;
 
 	private String token;
 
 	public UsuarioDTO() {
 		super();
+	}
+	
+	public UsuarioDTO(Long id, String nome, String email,
+			String senha, String foto, String tipo, String descricao, String bio) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.foto = foto;
+		this.tipo = tipo;
+		this.descricao = descricao;
+		this.bio = bio;
 	}
 
 	public long getId() {
@@ -66,6 +83,22 @@ public class UsuarioDTO {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
 	public String getToken() {

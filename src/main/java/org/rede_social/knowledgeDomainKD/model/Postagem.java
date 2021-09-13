@@ -2,6 +2,7 @@ package org.rede_social.knowledgeDomainKD.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class Postagem {
 	private String titulo;
 
 	@NotBlank
+	@Column(length = 8000)
 	private String publicacao;
 
 	@NotBlank
